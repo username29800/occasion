@@ -11,7 +11,7 @@ echo "# local port :: remote port" >> $2
 echo "#fwd2loc_$1 8080::8080" >> $2
 echo "" >> $2
 echo "# remote forwarding: local -> remote" >> $2
-echo "# remote port :: local port"
+echo "# remote port :: local port" >> $2
 echo "#fwd2rem_$1 22::8122" >> $2
 echo "#fwd2rem_$1 6000::6000" >> $2
 echo "#fwd2rem_$1 6001::6001" >> $2
