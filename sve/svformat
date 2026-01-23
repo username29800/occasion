@@ -1,0 +1,106 @@
+#section 10: distribution metadata
+@distname sve-ct-integration-test
+@distversion sve-container-2026.1a
+
+#section 20: argument preprocessor
+arg1 echo ${dq}\$1$dq $pchar $fearg
+arg3 echo ${dq}\$3$dq $pchar $fearg
+
+#section 30: parser fundamentals
+csdb cat \$arg1 $pchar grep $sq'^[^#]'$sq
+@entryname \$2
+entry echo $dq\$csdb$dq $pchar grep ${dq}^'$entryname '$dq $pchar $ln
+
+#section 31: common variables
+@cscmd $dq\$arg3$dq
+@fsource \$arg3
+@fdest \$4
+@dbfile \$arg1
+keystring cat \$arg3
+
+#section 40: global config
+dotssh echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_dotssh '$sq $pchar ${pos}2- $pchar $ln $pchar sed $sq's,/ *\?$,,'$sq
+pkeyformat echo $dq\$csdb$dq $pchar grep ${sq}'^cfg_pubkeyis '$sq $pchar ${pos}2- $pchar $ln
+xsh0 ${sve_load}\$csdb${sve_find}'^cfg_ssh '${sve_nc}
+xsh echo \$xsh0 $pchar ${sve_a}ssh${sve_b}
+xcp0 ${sve_load}\$csdb${sve_find}'^cfg_scp '${sve_nc}
+xcp echo \$xcp0 $pchar ${sve_a}scp${sve_b}
+xsv0 ${sve_load}\$csdb${sve_find}'^cfg_sshd '${sve_nc}
+xsv echo \$xsv0 $pchar ${sve_a}/usr/sbin/sshd${sve_b}
+
+#section 50d0: dependency resolver
+snidx echo ${dq}\$csdb$dq $pchar grep ${dq}'^name.self_$entryname '$dq $pchar ${pos}2- $pchar $ln
+selfname echo ${dq}\$csdb$dq $pchar grep ${dq}'^com_name$snidx '$dq $pchar ${pos}2- $pchar $ln
+
+#section 50: entry-specific config
+hostname echo \$entry $pchar ${pos}2
+port echo \$entry $pchar ${pos}3
+user echo \$entry $pchar ${pos}4
+pkey echo $dq\$csdb$dq $pchar grep ${sq}^${sq}'$pkeyformat$entryname'$sq $sq $pchar ${pos}2- $pchar $ln
+fwdruleset echo $dq\$csdb$dq $pchar grep ${dq}'^\(fwd2loc\|fwd2rem\)_$entryname '$dq $pchar sed ${dq}'s,^fwd2loc_$entryname ,-L ,'$dq $pchar sed ${dq}'s,^fwd2rem_$entryname ,-R ,'$dq $pchar sed ${dq}'s,^-L [^:]*:,&$hostname,'$dq $pchar sed ${dq}'s,^-R [^:]*:,&$selfname,'$dq $pchar tr ${dq}${nwln}$dq $sq $sq $pchar sed ${sq}'s, $,,'$sq
+@keyfile \$arg3
+lport echo $dq\$csdb$dq $pchar grep ${sq}'^listen_'${sq}'$entryname'$sq $sq $pchar ${pos}2 $pchar $ln
+entryline echo $dq\$csdb$dq $pchar 'grep -n .'$pchar grep ${sq}'^[0-9]*:'${sq}'$entryname'$sq $sq $pchar cut -d: -f1 $pchar $ln
+
+#section 51: components
+#identity key; private key
+ididx echo $dq\$csdb$dq $pchar grep ${dq}'^id.id_$entryname '$dq $pchar ${pos}2- $pchar $ln
+id echo $dq\$csdb$dq $pchar grep ${dq}'^com_id$ididx '$dq $pchar ${pos}2- $pchar $ln
+#hostkey for sshd launch; private key
+hkidx echo $dq\$csdb$dq $pchar grep ${dq}'^id.hkey_$entryname '$dq $pchar ${pos}2- $pchar $ln
+hostkey echo $dq\$csdb$dq $pchar grep ${dq}'^com_id$hkidx '$dq $pchar ${pos}2- $pchar $ln
+#selfname for remote forwarding; client's hostname or ip
+@snidx $dq\$snidx$dq
+@selfname $dq\$selfname$dq
+#storage configurations
+lstoridx echo ${dq}\$csdb$dq $pchar grep ${dq}'^store.loc_$entryname '$dq $pchar ${pos}2- $pchar $ln
+rstoridx echo ${dq}\$csdb$dq $pchar grep ${dq}'^store.rem_$entryname '$dq $pchar ${pos}2- $pchar $ln
+localstor echo ${dq}\$csdb$dq $pchar grep ${dq}'^com_store$lstoridx '$dq $pchar ${pos}2- $pchar $ln
+remotestor echo ${dq}\$csdb$dq $pchar grep ${dq}'^com_store$rstoridx '$dq $pchar ${pos}2- $pchar $ln
+
+#section 60: others
+@q86e $dq''$q86 $q86dev''$dq
+@q86root $dq'sudo $q86e'$dq
+
+#section X10: EUX variables
+eux_home0 ${sve_db}'^eux_home '${sve_nc}
+eux_home ${sve_load}'$eux_home0'${sve_c}'$(whoami)'${sve_b}
+eux_user0 ${sve_db}'^eux_user '${sve_nc}
+eux_user ${sve_load}'$eux_user0'${sve_c}'$(whoami)'${sve_b}
+eux_sve_bin ${sve_db}'^eux_bin '${sve_nc}
+
+#section R10: svrex fundamentals
+#svrex storage
+svrex_remotestoridx ${sve_db}'r_store.remotedata_$entryname '${sve_nc}
+svrex_remotestor ${sve_db}'com_store$svrex_remotestoridx '${sve_nc} $pchar ${sve_a}\$remotestor${sve_b}
+svrex_localstoridx ${sve_db}'r_store.localpath_$entryname '${sve_nc}
+svrex_localstor ${sve_db}'com_store$svrex_localstoridx '${sve_nc} $pchar cat $pchar ${sve_a}\$eux_bin${sve_b}
+#svrex command execution
+svrex_exec ${sve_db}'^r_exec_$entryname '${sve_nc}
+svrex_dbfile0 ${sve_db}'^r_dbfile_$entryname '${sve_nc}
+svrex_dbfile ${sve_load}\$svrex_dbfile0${sve_c}\$dbfile${sve_b}
+svrex_args0 ${sve_db}'^r_arg_$entryname '${sve_nc}
+svrex_args ${sve_load}\$svrex_args0${sve_c}'$svrex_dbfile $entryname'${sve_b}
+
+#section R11: svrex script variables
+dotssh_r ${sve_db}'^r_dotssh_$entryname '${sve_nc}
+pkey_ridx ${sve_db}'^r_pub.key_$entryname '${sve_nc}
+pkey_r ${sve_db}'^com_pub${pkey_ridx} '${sve_nc}
+eux_sve_bin_r ${sve_db}'r_eux_bin_$entryname '${sve_nc}
+eux_home_r ${sve_db}'^r_eux_home_$entryname '${sve_nc} $pchar ${sve_a}'$(whoami)'${sve_b}
+
+#section C10: ct-sabre integration
+ct_pathidx0 ${sve_db}'^c_ct.sabre.origin_$entryname '${sve_nc}
+ct_pathidx ${sve_load}\$ct_pathidx0${sve_c}0${sve_b}
+ct_path0 ${sve_db}'^com_ct.sabre$ct_pathidx '${sve_np}
+ct_path ${sve_load}\$ct_path0${sve_c}build${sve_b}
+ct_sysidx ${sve_db}'^c_store.ct.root_$entryname '${sve_nc}
+ct_system ${sve_db}'^com_store.ct$ct_sysidx '${sve_np}
+ct_user ${sve_db}'^c_user_$entryname '${sve_nc}
+ct_initidx ${sve_db}'^c_store.ct.init_$entryname '${sve_nc}
+ct_initpath0 ${sve_db}'^com_ct.sabre$ct_initidx '${sve_np}
+ct_initpath ${sve_load}\$ct_initpath0${sve_c}${sve_b}
+ct_exec ${sve_db}'^c_run_$entryname '${sve_nc}
+ct_wdidx ${sve_db}'^c_store.ct.initwd_$entryname '${sve_nc}
+ct_workdir0 ${sve_db}'^com_store.ct$ct_wdidx '${sve_np}
+ct_workdir ${sve_load}\$ct_workdir0${sve_c}/${sve_b}
