@@ -22,24 +22,32 @@ echo "com_name1 127.0.0.1" >> $1
 echo "" >> $1
 echo "# local data storage for ocfs" >> $1
 echo "com_store1 localdata" >> $1
+echo "" >> $1
 echo "# remote data storage for ocfs" >> $1
 echo "com_store2 remotedata" >> $1
+echo "" >> $1
 echo "# occasion script path: for eux path extension" >> $1
 echo "com_store3 build/" >> $1
 echo "" >> $1
 echo "# ssh identity key for connection" >> $1
 echo "com_id1 keys/id.rsa" >> $1
+echo "" >> $1
 echo "# public key string for ocaa_reg" >> $1
 echo "# NOTE: append a space after the config line" >> $1
 echo "#       before running occm_pubkey" >> $1
 echo "# Usage:     occm_pubkey [config_file] [instance] [key_file]" >> $1
 echo "# Usage: occm_pubkey_com [config_file] [component_index] [key_file]" >> $1
+echo "" >> $1
 echo "com_pub1" >> $1
+echo "" >> $1
 echo "" >> $1
 echo "# This section defines container(occt) configs" >> $1
 echo "# Run newct to find out more" >> $1
 echo "# Chroot container init script path" >> $1
+echo "" >> $1
 echo "com_ct.sabre1 ct_init/" >> $1
+echo "" >> $1
+echo "" >> $1
 echo "# Root directory for container" >> $1
 echo "com_store.ct1 system/" >> $1
 echo "com_store.ct2 /" >> $1
