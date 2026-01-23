@@ -1,14 +1,21 @@
 echo "" >> $2
-echo "## section 3: test entry" >> $2
+echo "# basic connection info" >> $2
 echo "$1 localhost 22 user" >> $2
 echo "" >> $2
 echo "name.self_$1 1" >> $2
 echo "id.id_$1 1" >> $2
 echo "" >> $2
+echo "# local forwarding" >> $2
+echo "# local port :: remote port" >> $2
 echo "#fwd2loc_$1 8080::8080" >> $2
+echo "" >> $2
+echo "# remote forwarding" >> $2
+echo "# remote port :: local port"
 echo "#fwd2rem_$1 22::8122" >> $2
 echo "#fwd2rem_$1 6000::6000" >> $2
 echo "#fwd2rem_$1 6001::6001" >> $2
+echo "" >> $2
+echo "# whitespace in forward rule will cause errors" >> $2
 echo "" >> $2
 echo "store.loc_$1 1" >> $2
 echo "store.rem_$1 2" >> $2
@@ -19,10 +26,16 @@ echo "" >> $2
 echo "r_store.remotedata_$1 2" >> $2
 echo "r_store.localpath_$1 3" >> $2
 echo "" >> $2
-echo "r_exec_$1 cspkey_r" >> $2
+echo "# this registers your ssh public key to remote" >> $2
+echo "r_exec_$1 ocaa_reg" >> $2
+echo "" >> $2
+echo "# this sets up the eux environment on remote" >> $2
+echo "#r_exec_$1 eux_r" >> $2
+echo "# adjust user's home directory. use absolute path" >> $2
+echo "r_eux_home_$1 /home/user" >> $2
+echo "r_eux_bin_$1 /home/user/occasion/sve/build" >> $2
+echo "" >> $2
+echo "# keep these options unchanged unless necessary" >> $2
 echo "#r_arg_$1" >> $2
 echo "#r_dbfile_$1" >> $2
-echo "" >> $2
-echo "r_eux_home_$1 /home/user" >> $2
-echo "r_eux_bin_$1 /home/user/endure/sve/build" >> $2
 echo "" >> $2
