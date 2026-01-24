@@ -30,7 +30,7 @@ echo "# occasion script path: for eux path extension" >> $1
 echo "com_store3 build/" >> $1
 echo "" >> $1
 echo "# ssh identity key for connection" >> $1
-echo "com_id1 keys/id.rsa" >> $1
+echo "com_id1 keystore/key.ed25519" >> $1
 echo "" >> $1
 echo "# public key string for ocaa_reg" >> $1
 echo "# NOTE: append a space after the config line" >> $1
