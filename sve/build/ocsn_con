@@ -75,4 +75,8 @@ ct_workdir0=$(echo "$csdb" | grep "^com_store.ct$ct_wdidx " | head -n1 | cut -d'
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
 #fwdrule="$3"
+echo "Occasion Session: connecting to $user@$hostname:$port via ssh"
+echo "Occasion Session: Using ID Key: $id"
+echo "Occasion Session: forwarding rules:"
+echo "Occasion Session: $fwdruleset"
 $xsh -YC -p "$port" $fwdruleset -i "$id" $user@"$hostname"

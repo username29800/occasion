@@ -1,5 +1,9 @@
 #!/bin/sh
+echo "Occasion Auto-admin: connecting to $user@$hostname:$port via ssh"
+echo "Occasion Auto-admin: creating directory $svrex_remotestor"
 $xsh -YC -p "$port" $fwdruleset -i "$id" $user@"$hostname" -t "mkdir -p $svrex_remotestor"
+echo "Occasion Auto-admin: sending required files to $user@$hostname:$port"
 $xcp -i "$id" -OCrp -P "$port" "$svrex_localstor/$svrex_exec" $user@$hostname:"$svrex_remotestor/$svrex_exec"
 $xcp -i "$id" -OCrp -P "$port" "$svrex_dbfile" $user@$hostname:"$svrex_remotestor/$svrex_dbfile"
+echo "Occasion Auto-admin: executing command $svrex_exec $svrex_args"
 $xsh -YC -p "$port" $fwdruleset -i "$id" $user@"$hostname" -t "cd $svrex_remotestor && sh $svrex_exec $svrex_args"

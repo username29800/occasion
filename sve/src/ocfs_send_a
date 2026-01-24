@@ -1,4 +1,7 @@
 #!/bin/sh
 #fsource="$3"
 #fdest="$4"
+echo "Occasion File-sharing: connecting to $user@$hostname:$port via ssh"
+echo "Occasion File-sharing: sending $fsource"
 $xcp -i "$id" -OCrp -P "$port" "$fsource" $user@$hostname:"$fdest"
+echo "Occasion File-sharing: saved to $fdest"

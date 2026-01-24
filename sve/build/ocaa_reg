@@ -75,9 +75,12 @@ ct_workdir0=$(echo "$csdb" | grep "^com_store.ct$ct_wdidx " | head -n1 | cut -d'
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
 #sprefix=$(cat sprefix)
+echo "Occasion Auto-admin: creating .ssh"
 mkdir -p $dotssh_r
+echo "Occasion Auto-admin: adding public key"
 echo '' >> $dotssh_r/authorized_keys
 echo "$pkey_r" >> $dotssh_r/authorized_keys
 echo '' >> $dotssh_r/authorized_keys
+echo "Occasion Auto-admin: adjusting permissions"
 chmod 0700 $dotssh_r
 chmod 0600 $dotssh_r/authorized_keys

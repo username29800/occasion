@@ -1,2 +1,6 @@
 #!/bin/sh
+echo "Occasion Config-manager: attaching key $arg3 to config $dbfile"
 sed -i "s,^com_pub$pkey_ridx $,&$keystring," $dbfile
+echo "Occasion Config-manager: key attached to component com_pub$pkey_ridx"
+echo "Occasion Config-manager: and instance $entryname"
+echo "Occasion Config-manager: in config file $dbfile"
