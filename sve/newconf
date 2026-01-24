@@ -81,7 +81,7 @@ pp="Occasion Auto-config:"
 echo "$pp New instance $1 is created."
 echo "$pp "
 echo " ==============[recommended todo]=============="
-echo " 1. check connection
+echo " 1. check connection"
 echo "    $ sh build/ocsn_con $2 $1"
 echo " "
 echo " 2. register pubkey"
