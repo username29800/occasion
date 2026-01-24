@@ -63,11 +63,13 @@ echo "" >> $1
 echo "# per-instance config" >> $1
 echo "" >> $1
 
-echo "Welcome to OCCASION:"
-echo "One Config"
-echo "Connect Anywhere"
-echo "Share Instantly"
-echo "Over Network"
+echo "+#+#+#+#+#+#+#+#+#+#+#+#"
+echo "+ Welcome to OCCASION: #"
+echo "+ One Config           #"
+echo "+ Connect Anywhere     #"
+echo "+ Share Instantly      #"
+echo "+ Over Network         #"
+echo "+#+#+#+#+#+#+#+#+#+#+#+#"
 echo "Occasion Auto-config: take a look at the config file $1"
 echo "Occasion Auto-config: for detailed explanation and tutorial"
 echo ""
