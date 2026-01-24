@@ -76,3 +76,23 @@ echo "# Step 2: replace ocaa_reg line with eux_r line, then configure the enviro
 echo "#         $ sh build/ocaa_run [config_file] $1" >> $2
 echo "" >> $2
 echo "" >> $2
+
+pp="Occasion Auto-config:"
+echo "$pp New instance $1 is created."
+echo "$pp "
+echo " ==============[recommended todo]=============="
+echo " 1. check connection
+echo "    $ sh build/ocsn_con $2 $1"
+echo " "
+echo " 2. register pubkey"
+echo "    $ sh build/ocaa_run $2 $1"
+echo " "
+echo " 3. EUX setup"
+echo "    - tutorial is provided in config file: $2"
+echo " =============================================="
+echo " "
+echo "$pp Things you should adjust:"
+echo "$pp ocsn: basic connection info"
+echo "$pp ocaa: r_dotssh_$1, r_eux_home_$1"
+echo "$pp "
+echo "$pp The rest of the config is pre-wired. Good luck!"

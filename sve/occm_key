@@ -1,3 +1,14 @@
 #!/bin/sh
 mkdir keystore
 ssh-keygen -t ed25519 -N "" -f "keystore/$1"
+pp="Occasion keygen-wrapper:"
+echo "$pp new ssh key $1 has been created"
+echo "$pp "
+echo "=====[recommended todo]====="
+echo " 1. adjust global config"
+echo "    - modify/create com_id component"
+echo "      to refer to keystore/$1"
+echo " "
+echo " 2. attach public key"
+echo "    $ sh build/occm_pubkey [config] [component index] keystore/$1.pub"
+echo "============================"
