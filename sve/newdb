@@ -62,3 +62,15 @@ echo "" >> $1
 echo "" >> $1
 echo "# per-instance config" >> $1
 echo "" >> $1
+
+echo "Welcome to OCCASION:"
+echo "One Config"
+echo "Connect Anywhere"
+echo "Share Instantly"
+echo "Over Network"
+echo "Occasion Auto-config: take a look at the config file $1"
+echo "Occasion Auto-config: for detailed explanation and tutorial"
+echo ""
+echo "Occasion Auto-config: the file $1 contains global configuration for Occasion"
+echo "Occasion Auto-config: TIP: run 'sh newconf [anything] $1'"
+echo "Occasion Auto-config:      to create new instance"
