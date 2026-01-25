@@ -1,6 +1,6 @@
 # OCCASION: The Remote Workflow Manager
 ## Introduction
-Your works, scattered all over devices, **now on one accesible desk.**
+Your works, scattered all over devices, **now on one accessible desk.**
 
 Occasion is a **"Workflow over Network"** assisstant:
 
