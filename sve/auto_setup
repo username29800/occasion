@@ -11,6 +11,8 @@ instance_user="user_name"
 instance_dotssh="/home/${instance_user}/.ssh"
 instance_home="/home/${instance_user}"
 
+mv keystore/${key_name} keystore/${key_name}.backup
+mv keystore/${key_name}.pub keystore/${key_name}.pub.backup
 
 echo "y
 $config_name
