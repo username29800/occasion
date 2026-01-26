@@ -12,7 +12,7 @@ read
 
 echo ""
 echo "The path to your .ssh directory:"
-echo "(Both absoulte/relative path is allowed)"
+echo "(Both absolute/relative path is allowed)"
 echo "Current directory is $(pwd)"
 read newdb_dotssh_i
 newdb_dotssh="$(cd "$newdb_dotssh_i" && pwd)"
@@ -48,7 +48,7 @@ read
 
 echo ""
 echo "Enter your home directory (/home/[username]):"
-echo "(Both absoulte/relative path is allowed)"
+echo "(Both absolute/relative path is allowed)"
 echo "Current directory is $(pwd)"
 read newdb_home_i
 newdb_dotssh="$(cd "$newdb_home_i" && pwd)"
