@@ -19,7 +19,7 @@ cd occasion/sve
 ```
 Then call our guided setup:
 ```bash
-sh newdb config
+sh guided_setup
 ```
 
 ## Components and Features
