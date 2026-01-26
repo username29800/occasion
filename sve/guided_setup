@@ -1,0 +1,20 @@
+#!/bin/sh
+# Occasion Auto-config Greeter
+pp="Occasion Auto-config:"
+echo "$pp "
+echo "========================"
+echo "| Welcome to Occasion: |"
+echo "| One                  |"
+echo "| Config               |"
+echo "| Connect              |"
+echo "| Anywhere             |"
+echo "| Share                |"
+echo "| Instantly            |"
+echo "| Over                 |"
+echo "| Network              |"
+echo "========================"
+
+echo "Would you like to create a new config? (y/n)"
+read newdb_run
+run_flag="$(echo $newdb_run | grep '^ *\?y *\?$' | head -n1 | sed 's,^.*$,sh newdb_interactive,')"
+eval "$run_flag"

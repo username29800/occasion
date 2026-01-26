@@ -1,0 +1,53 @@
+#!/bin/sh
+pp="Occasion QuickStart: "
+
+echo ""
+echo "Enter the name of new config:"
+read newdb_name
+echo "$pp Creating new config file '$newdb_name'"
+sh newdb "$newdb_name"
+echo ""
+echo "$pp Press Enter to Continue"
+read
+
+echo ""
+echo "The path to your .ssh directory:"
+echo "(Both absoulte/relative path is allowed)"
+read newdb_dotssh_i
+newdb_dotssh="$(cd "$newdb_dotssh_i" && pwd)"
+sed -i "s,^cfg_dotssh .*$,cfg_dotssh ${newdb_dotssh}," "$newdb_name"
+echo "$pp .ssh path set to: $newdb_dotssh"
+echo ""
+echo "$pp Press Enter to Continue"
+read
+
+echo ""
+echo "Name of the ssh key to create:"
+read newdb_key
+sh occm_key $newdb_key
+sed -i "s,^com_id1 .*$,com_id1 keystore/${newdb_key}," "$newdb_name"
+echo "$pp ssh key 'keystore/$newdb_key' is attached to com_id1"
+
+echo ""
+sed -i "s,^com_pub1$,& ," "$newdb_name"
+sh build/occm_pubkey_com "$newdb_name" 1 "keystore/${newdb_key}.pub"
+echo "$pp public key 'keystore/${newdb_key}.pub' is attached to com_pub1"
+echo ""
+echo "$pp Press Enter to Continue"
+read
+
+echo ""
+echo "Identifier of this client [ip or hostname]:"
+read newdb_selfname
+sed -i "s,^com_name1 .*$,com_name1 ${newdb_selfname}," "$newdb_name"
+echo "$pp component com_name1 set to '$newdb_selfname'"
+echo ""
+echo "$pp Press Enter to Continue"
+read
+
+echo ""
+echo "Enter your home directory (/home/[username]):"
+read newdb_home
+sed -i "s,^eux_home .*$,eux_home ${newdb_home}," "$newdb_name"
+echo "$pp home directory set to: $newdb_home"
+echo ""
