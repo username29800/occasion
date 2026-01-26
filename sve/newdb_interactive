@@ -22,12 +22,11 @@ echo ""
 echo "$pp Press Enter to Continue"
 read str
 
-mv keystore/${key_name} keystore/${key_name}.backup
-mv keystore/${key_name}.pub keystore/${key_name}.pub.backup
-
 echo ""
 echo "Name of the ssh key to create:"
 read newdb_key
+mv keystore/${newdb_key} keystore/${newdb_key}.backup
+mv keystore/${newdb_key}.pub keystore/${newdb_key}.pub.backup
 sh occm_key $newdb_key
 sed -i "s,^com_id1 .*$,com_id1 keystore/${newdb_key}," "$newdb_name"
 echo "$pp ssh key 'keystore/$newdb_key' is attached to com_id1"
