@@ -1,0 +1,36 @@
+config_name="config_name"
+key_name="key_name"
+dotssh="../../.ssh"
+homedir="../../"
+client_id="client.name.example"
+
+instance_name="instance_name"
+instance_id="remote.name.example"
+instance_port="22"
+instance_user="user_name"
+instance_dotssh="/home/${instance_user}/.ssh"
+instance_home="/home/${instance_user}"
+
+
+echo "y
+$config_name
+
+$dotssh
+
+$key_name
+
+$client_id
+
+$homedir
+y
+$config_name
+$instance_name
+
+$instance_id
+$instance_port
+$instance_user
+
+$instance_dotssh
+
+$instance_home
+" | sh guided_setup
