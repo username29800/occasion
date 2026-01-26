@@ -18,3 +18,8 @@ echo "Would you like to create a new config? (y/n)"
 read newdb_run
 run_flag="$(echo $newdb_run | grep '^ *\?y *\?$' | head -n1 | sed 's,^.*$,sh newdb_interactive,')"
 eval "$run_flag"
+
+echo "Would you like to create a new instance? (y/n)"
+read newconf_run
+run_flag="$(echo $newconf_run | grep '^ *\?y *\?$' | head -n1 | sed 's,^.*$,sh newconf_interactive,')"
+eval "$run_flag"

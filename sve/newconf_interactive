@@ -1,0 +1,47 @@
+#!/bin/sh
+pp="Occasion QuickStart: "
+
+echo ""
+echo "Enter the name of an existing config:"
+read newconf_file
+echo "Enter the name of new instance:"
+read newconf_name
+echo "$pp Creating new instance '$newconf_name'"
+sh newconf "$newconf_name" "$newconf_file"
+echo ""
+echo "$pp Press Enter to Continue"
+read
+
+echo ""
+echo "Identifier of remote [ip or hostname]:"
+read newconf_id
+echo ""
+echo "Port number:"
+read newconf_port
+echo ""
+echo "Username for this remote:"
+read newconf_user
+sed -i "s,^${newconf_name} localhost 22 user$,${newconf_name} ${newconf_id} ${newconf_port} ${newconf_user}," "$newconf_file"
+echo ""
+echo "New connection entry: ${newconf_name} ${newconf_id} ${newconf_port} ${newconf_user}"
+echo ""
+echo "$pp Press Enter to Continue"
+read
+
+echo ""
+echo "The path to remote .ssh directory:"
+echo "Relative path may cause errors"
+read newconf_dotssh
+sed -i "s,^r_dotssh_${newconf_name} .*$,r_dotssh_${newconf_name} ${newconf_dotssh}," "$newconf_file"
+echo "$pp remote .ssh path set to: $newconf_dotssh"
+echo ""
+echo "$pp Press Enter to Continue"
+read
+
+echo ""
+echo "Enter the remote home directory (/home/[username]):"
+echo "Relative path may cause errors"
+read newconf_home
+sed -i "s,^eux_home .*$,eux_home ${newconf_home}," "$newconf_file"
+echo "$pp remote home directory set to: $newconf_home"
+echo ""

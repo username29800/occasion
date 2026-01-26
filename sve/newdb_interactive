@@ -13,6 +13,7 @@ read
 echo ""
 echo "The path to your .ssh directory:"
 echo "(Both absoulte/relative path is allowed)"
+echo "Current directory is $(pwd)"
 read newdb_dotssh_i
 newdb_dotssh="$(cd "$newdb_dotssh_i" && pwd)"
 sed -i "s,^cfg_dotssh .*$,cfg_dotssh ${newdb_dotssh}," "$newdb_name"
@@ -47,7 +48,10 @@ read
 
 echo ""
 echo "Enter your home directory (/home/[username]):"
-read newdb_home
+echo "(Both absoulte/relative path is allowed)"
+echo "Current directory is $(pwd)"
+read newdb_home_i
+newdb_dotssh="$(cd "$newdb_home_i" && pwd)"
 sed -i "s,^eux_home .*$,eux_home ${newdb_home}," "$newdb_name"
 echo "$pp home directory set to: $newdb_home"
 echo ""
