@@ -1,5 +1,5 @@
 #!/bin/sh
-pp="Occasion QuickStart: "
+pp="Occasion QuickStart:"
 
 echo ""
 echo "Enter the name of new config:"
@@ -51,7 +51,7 @@ echo "Enter your home directory (/home/[username]):"
 echo "(Both absolute/relative path is allowed)"
 echo "Current directory is $(pwd)"
 read newdb_home_i
-newdb_dotssh="$(cd "$newdb_home_i" && pwd)"
+newdb_home="$(cd "$newdb_home_i" && pwd)"
 sed -i "s,^eux_home .*$,eux_home ${newdb_home}," "$newdb_name"
 echo "$pp home directory set to: $newdb_home"
 echo ""
