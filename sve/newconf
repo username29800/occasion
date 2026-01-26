@@ -38,7 +38,7 @@ echo "" >> $2
 echo "# automatic key registration: ocaa(automated administration) section" >> $2
 echo "# remote .ssh directory" >> $2
 echo "r_dotssh_$1 /home/user/.ssh" >> $2
-echo "" >> $1
+echo "" >> $2
 echo "# public key to register on remote" >> $2
 echo "r_pub.key_$1 1" >> $2
 echo "" >> $2
@@ -52,20 +52,20 @@ echo "# ocaa storage config: ocaa(automated administration) section" >> $2
 echo "r_store.remotedata_$1 2" >> $2
 echo "r_store.localpath_$1 3" >> $2
 echo "" >> $2
-echo "" >> $1
+echo "" >> $2
 echo "# this registers your ssh public key to remote" >> $2
 echo "r_exec_$1 ocaa_reg" >> $2
 echo "" >> $2
-echo "" >> $1
+echo "" >> $2
 echo "# this sets up the eux environment on remote" >> $2
 echo "#r_exec_$1 eux_r" >> $2
-echo "" >> $1
-echo "" >> $1
+echo "" >> $2
+echo "" >> $2
 echo "# adjust user's home directory. use absolute path" >> $2
 echo "r_eux_home_$1 /home/user" >> $2
 echo "r_eux_bin_$1 /home/user/occasion/sve/build" >> $2
 echo "" >> $2
-echo "" >> $1
+echo "" >> $2
 echo "# keep these options unchanged unless necessary" >> $2
 echo "#r_arg_$1" >> $2
 echo "#r_dbfile_$1" >> $2
