@@ -21,9 +21,6 @@ instance_home="/home/${instance_user}"
 
 # Runner
 
-mv keystore/${key_name} keystore/${key_name}.backup
-mv keystore/${key_name}.pub keystore/${key_name}.pub.backup
-
 echo "$create_config
 $config_name
 

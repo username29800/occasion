@@ -10,7 +10,7 @@ echo "$pp Creating new instance '$newconf_name'"
 sh newconf "$newconf_name" "$newconf_file"
 echo ""
 echo "$pp Press Enter to Continue"
-read
+read str
 
 echo ""
 echo "Identifier of remote [ip or hostname]:"
@@ -26,7 +26,7 @@ echo ""
 echo "New connection entry: ${newconf_name} ${newconf_id} ${newconf_port} ${newconf_user}"
 echo ""
 echo "$pp Press Enter to Continue"
-read
+read str
 
 echo ""
 echo "The path to remote .ssh directory:"
@@ -36,7 +36,7 @@ sed -i "s,^r_dotssh_${newconf_name} .*$,r_dotssh_${newconf_name} ${newconf_dotss
 echo "$pp remote .ssh path set to: $newconf_dotssh"
 echo ""
 echo "$pp Press Enter to Continue"
-read
+read str
 
 echo ""
 echo "Enter the remote home directory (/home/[username]):"

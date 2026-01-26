@@ -8,7 +8,7 @@ echo "$pp Creating new config file '$newdb_name'"
 sh newdb "$newdb_name"
 echo ""
 echo "$pp Press Enter to Continue"
-read
+read str
 
 echo ""
 echo "The path to your .ssh directory:"
@@ -20,7 +20,10 @@ sed -i "s,^cfg_dotssh .*$,cfg_dotssh ${newdb_dotssh}," "$newdb_name"
 echo "$pp .ssh path set to: $newdb_dotssh"
 echo ""
 echo "$pp Press Enter to Continue"
-read
+read str
+
+mv keystore/${key_name} keystore/${key_name}.backup
+mv keystore/${key_name}.pub keystore/${key_name}.pub.backup
 
 echo ""
 echo "Name of the ssh key to create:"
@@ -35,7 +38,7 @@ sh build/occm_pubkey_com "$newdb_name" 1 "keystore/${newdb_key}.pub"
 echo "$pp public key 'keystore/${newdb_key}.pub' is attached to com_pub1"
 echo ""
 echo "$pp Press Enter to Continue"
-read
+read str
 
 echo ""
 echo "Identifier of this client [ip or hostname]:"
@@ -44,7 +47,7 @@ sed -i "s,^com_name1 .*$,com_name1 ${newdb_selfname}," "$newdb_name"
 echo "$pp component com_name1 set to '$newdb_selfname'"
 echo ""
 echo "$pp Press Enter to Continue"
-read
+read str
 
 echo ""
 echo "Enter your home directory (/home/[username]):"
