@@ -37,6 +37,7 @@ $instance_dotssh
 $instance_home
 " | sh guided_setup
 
+pp="Occasion Auto-setup:"
 echo "$pp Congratulations. You're good to go."
 echo "$pp Test connection with:"
 echo "$pp $ sh build/ocsn_con ${config_name} ${instance_name}"
