@@ -1,20 +1,30 @@
+# Global config
 config_name="config_name"
 key_name="key_name"
 dotssh="../../.ssh"
 homedir="../../"
 client_id="client.name.example"
 
+# Instance config
 instance_name="instance_name"
 instance_id="remote.name.example"
 instance_port="22"
 instance_user="user_name"
+
+# Runner config
+create_config="y"
+create_instance="y"
+
+# Usually you don't have to modify this section
 instance_dotssh="/home/${instance_user}/.ssh"
 instance_home="/home/${instance_user}"
+
+# Runner
 
 mv keystore/${key_name} keystore/${key_name}.backup
 mv keystore/${key_name}.pub keystore/${key_name}.pub.backup
 
-echo "y
+echo "$create_config
 $config_name
 
 $dotssh
@@ -24,7 +34,7 @@ $key_name
 $client_id
 
 $homedir
-y
+$create_config
 $config_name
 $instance_name
 
