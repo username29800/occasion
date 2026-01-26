@@ -36,3 +36,5 @@ $instance_dotssh
 
 $instance_home
 " | sh guided_setup
+
+echo "$pp Setup Complete"
