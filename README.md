@@ -21,6 +21,12 @@ Then call our guided setup:
 ```bash
 sh guided_setup
 ```
+You can also declare your setup to fully automate the setup process:
+```bash
+# declare your setup in variable declarations of 'auto_setup'
+# vim auto_setup
+sh auto_setup
+```
 
 ## Components and Features
 | Component | Feature | In short | Scripts |
