@@ -43,5 +43,6 @@ echo "Enter the remote home directory (/home/[username]):"
 echo "Relative path may cause errors"
 read newconf_home
 sed -i "s,^r_eux_home_${newconf_name} .*$,r_eux_home_${newconf_name} ${newconf_home}," "$newconf_file"
+sed -i "s,^r_eux_bin_${newconf_name} .*$,r_eux_bin_${newconf_name} ${newconf_home}/occasion/sve/build," "$newconf_file"
 echo "$pp remote home directory set to: $newconf_home"
 echo ""
