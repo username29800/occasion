@@ -34,7 +34,7 @@ $key_name
 $client_id
 
 $homedir
-$create_config
+$create_instance
 $config_name
 $instance_name
 
