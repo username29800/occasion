@@ -25,6 +25,9 @@ port=$(echo $entry | cut -d' ' -f3)
 user=$(echo $entry | cut -d' ' -f4)
 pkey=$(echo "$csdb" | grep '^'$pkeyformat$entryname' ' | cut -d' ' -f2- | head -n1)
 fwdruleset=$(echo "$csdb" | grep "^\(fwd2loc\|fwd2rem\)_$entryname " | sed "s,^fwd2loc_$entryname ,-L ," | sed "s,^fwd2rem_$entryname ,-R ," | sed "s,^-L [^:]*:,&$hostname," | sed "s,^-R [^:]*:,&$selfname," | tr "\\n" ' ' | sed 's, $,,')
+jtoidx=$(echo "$csdb" | grep "^jumpto.from_$entryname " | head -n1 | cut -d' ' -f2-)
+jumpto=$(echo "$csdb" | grep "^com_jumpto$jtoidx " | head -n1 | cut -d' ' -f2-)
+jumpruleset=$(echo "$jumpto" | sed 's,^.*$,-J &,')
 keyfile=$arg3
 lport=$(echo "$csdb" | grep '^listen_'$entryname' ' | cut -d' ' -f2 | head -n1)
 entryline=$(echo "$csdb" | grep -n .| grep '^[0-9]*:'$entryname' ' | cut -d: -f1 | head -n1)
@@ -79,4 +82,4 @@ echo "Occasion Session: connecting to $user@$hostname:$port via ssh"
 echo "Occasion Session: Using ID Key: $id"
 echo "Occasion Session: forwarding rules:"
 echo "Occasion Session: $fwdruleset"
-$xsh -YC -p "$port" $fwdruleset -i "$id" $user@"$hostname"
+$xsh -YC -p "$port" $jumpruleset $fwdruleset -i "$id" $user@"$hostname"
