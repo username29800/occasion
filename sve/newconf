@@ -19,9 +19,6 @@ echo "#fwd2rem_$1 22::8122" >> $2
 echo "#fwd2rem_$1 6000::6000" >> $2
 echo "#fwd2rem_$1 6001::6001" >> $2
 echo "" >> $2
-echo "# multi-hop ssh configuration: ocsn (session) section" >> $2
-echo "#jumpto.from_$1 1" >> $2
-echo "" >> $2
 echo "# whitespace in forwarding rule will cause errors" >> $2
 echo "" >> $2
 echo "# Usage:    ocsn_con [config_file] [instance]" >> $2
