@@ -25,6 +25,8 @@ port=$(echo $entry | cut -d' ' -f3)
 user=$(echo $entry | cut -d' ' -f4)
 pkey=$(echo "$csdb" | grep '^'$pkeyformat$entryname' ' | cut -d' ' -f2- | head -n1)
 fwdruleset=$(echo "$csdb" | grep "^\(fwd2loc\|fwd2rem\)_$entryname " | sed "s,^fwd2loc_$entryname ,-L ," | sed "s,^fwd2rem_$entryname ,-R ," | sed "s,^-L [^:]*:,&$hostname," | sed "s,^-R [^:]*:,&$selfname," | tr "\\n" ' ' | sed 's, $,,')
+jumpdstidx=$(echo "$csdb" | grep "^jump.to_$entryname " | head -n1 | cut -d' ' -f2-)
+jumpto=$(echo "$csdb" | grep "^com_jump$jumpdstidx " | head -n1 | cut -d' ' -f2- | grep '^.*$' | sed 's,^.*$,-J &,')
 keyfile=$arg3
 lport=$(echo "$csdb" | grep '^listen_'$entryname' ' | cut -d' ' -f2 | head -n1)
 entryline=$(echo "$csdb" | grep -n .| grep '^[0-9]*:'$entryname' ' | cut -d: -f1 | head -n1)
@@ -78,5 +80,5 @@ ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #fdest="$4"
 echo "Occasion File-sharing: connecting to $user@$hostname:$port via ssh"
 echo "Occasion File-sharing: retrieving $remotestor/$fsource"
-$xcp -i "$id" -OCrp -P "$port" "${user}@${hostname}:$remotestor/$fsource" "$localstor/$fdest"
+$xcp -i "$id" -OCrp -P "$port" $jumpto "${user}@${hostname}:$remotestor/$fsource" "$localstor/$fdest"
 echo "Occasion File-sharing: saved to $localstor/$fdest"

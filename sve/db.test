@@ -21,20 +21,27 @@ cfg_dotssh /home/user/.ssh
 #cfg_sshd /usr/sbin/sshd
 
 ## section 2: components
+
 # hostnames for remote forwarding
 # hostname may vary, depending on the environment and NIC(network interface) being used for a connection.
 com_name1 localhost
 com_name2 example.test
 com_name3 127.0.0.1
+
+# multi-hop jump destinations
+com_jump1 destination.test
+
 # storage(source/destination pool for file transfer operations)
 com_store1 test
 com_store2 test2
 com_store3 build
 com_store4 ext
 com_store5 src
+
 # identity key (auth key or hostkey : private key only)
 com_id1 id_rsa
 com_id2 id_server
+
 # remote-exec configuration
 # public key string for remote key registration
 com_pub1 aADb4DAc0BEd4EFefA5BCD0EFA1Dpy7DAt8hBEonEF
@@ -52,6 +59,8 @@ eux_bin build/
 # every entry is basically a ssh connection config,
 # which consists of: entryname hostname port username
 test2 127.0.0.1 22 user
+# jump host and destination list
+jump.to_test2 1
 # selfname: client's own hostname for remote forwarding
 # for multi-hop ssh and rxch(remote exec chaining), adjust selfname to point the previous node
 name.self_test2 2

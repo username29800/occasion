@@ -3,5 +3,5 @@
 #fdest="$4"
 echo "Occasion File-sharing: connecting to $user@$hostname:$port via ssh"
 echo "Occasion File-sharing: retrieving $fsource"
-$xcp -i "$id" -OCrp -P "$port" "${user}@${hostname}:$fsource" "$fdest"
+$xcp -i "$id" -OCrp -P "$port" $jumpto "${user}@${hostname}:$fsource" "$fdest"
 echo "Occasion File-sharing: saved to $fdest"

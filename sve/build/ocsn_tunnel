@@ -76,9 +76,9 @@ ct_wdidx=$(echo "$csdb" | grep "^c_store.ct.initwd_$entryname " | head -n1 | cut
 ct_workdir0=$(echo "$csdb" | grep "^com_store.ct$ct_wdidx " | head -n1 | cut -d' ' -f2- | sed 's,/ *\?$,,')
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
-#fsource="$3"
-#fdest="$4"
-echo "Occasion File-sharing: connecting to $user@$hostname:$port via ssh"
-echo "Occasion File-sharing: retrieving $fsource"
-$xcp -i "$id" -OCrp -P "$port" "${user}@${hostname}:$fsource" "$fdest"
-echo "Occasion File-sharing: saved to $fdest"
+#fwdrule="$3"
+echo "Occasion Session: connecting to $user@$hostname:$port via ssh"
+echo "Occasion Session: Using ID Key: $id"
+echo "Occasion Session: forwarding rules:"
+echo "Occasion Session: $fwdruleset"
+$xsh -YCTNnf -p "$port" $jumpto $fwdruleset -i "$id" $user@"$hostname"
