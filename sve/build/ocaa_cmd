@@ -1,5 +1,5 @@
-distname=sve-ct-integration-test
-distversion=sve-container-2026.1a
+distname=sve-occasion
+distversion=sve-occasion-2026.1
 arg1=$(echo "$1" | sed 's,^$,.,')
 arg3=$(echo "$3" | sed 's,^$,.,')
 csdb=$(cat $arg1 | grep '^[^#]')
@@ -77,4 +77,4 @@ ct_workdir0=$(echo "$csdb" | grep "^com_store.ct$ct_wdidx " | head -n1 | cut -d'
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
 #cmd="$3"
-$xsh -YC -p "$port" $fwdruleset -i "$id" $user@"$hostname" -t "$cscmd"
+$xsh -YC -p "$port" $jumpto $fwdruleset -i "$id" $user@"$hostname" -t "$cscmd"

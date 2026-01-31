@@ -1,5 +1,5 @@
-distname=sve-ct-integration-test
-distversion=sve-container-2026.1a
+distname=sve-occasion
+distversion=sve-occasion-2026.1
 arg1=$(echo "$1" | sed 's,^$,.,')
 arg3=$(echo "$3" | sed 's,^$,.,')
 csdb=$(cat $arg1 | grep '^[^#]')
@@ -80,5 +80,5 @@ ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #fdest="$4"
 echo "Occasion File-sharing: connecting to $user@$hostname:$port via ssh"
 echo "Occasion File-sharing: retrieving $fsource"
-$xcp -i "$id" -OCrp -P "$port" "${user}@${hostname}:$fsource" "$fdest"
+$xcp -i "$id" -OCrp -P "$port" $jumpto "${user}@${hostname}:$fsource" "$fdest"
 echo "Occasion File-sharing: saved to $fdest"
