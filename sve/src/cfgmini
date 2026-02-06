@@ -94,6 +94,6 @@ echo "$pp Check out .profile and .zshrc for details"
 echo "$pp NOTE: Previous configs are stored in occasion-backups under $dest"
 echo "$pp TIP: If immodule envvar does not work, try:"
 echo "$pp      ~$ cat .zshrc.1 >> .bashrc"
-echo "$pp      (or your shell config)
+echo "$pp      (or your shell config)"
 echo ""
 echo "$pp Good Luck, Have Fun! :D"
