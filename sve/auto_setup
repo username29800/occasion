@@ -1,15 +1,23 @@
+# NOTE: From sve-occasion-2026.4, auto-setup and guided-setup uses no-docs version of config generator.
+#       For beginners, it is recommended to switch to the guided version using:
+#       1. Open newdb_interactive
+#       2. Replace "newdb_nodocs" with "newdb"
+#       3. Open newconf_interactive
+#       4. Replace "newconf_nodocs" with "newconf"
+
+
 # Global config
 config_name="config_name"
 key_name="key_name"
 dotssh="$HOME/.ssh"
 homedir="$HOME"
-client_id="client.name.example"
+client_id="here.example"
 
 # Instance config
 instance_name="instance_name"
-instance_id="remote.name.example"
+instance_id="there.example"
 instance_port="22"
-instance_user="user_name"
+instance_user="user"
 
 # Runner config
 create_config="y"

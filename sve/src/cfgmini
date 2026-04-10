@@ -25,6 +25,8 @@ echo 'export PATH=$PATH:'"$src:$dest/eux-utils" >> .zshrc.1
 echo '# for wayland sessions with ibus (ibus wayland)' >> .zshrc.1
 echo '#unset GTK_IM_MODULE' >> .zshrc.1
 echo '#unset QT_IM_MODULE' >> .zshrc.1
+echo '' >> .zshrc.1
+echo 'alias nvim="nvim -u ~/.vimrc"' >> .zshrc.1
 cp -a $dest/.profile $dest/occasion-backups/.profile
 #echo 'export GTK_IM_MODULE=ibus' > .profile
 #echo 'export QT_IM_MODULE=ibus' >> .profile
@@ -71,7 +73,10 @@ cd $dest/sve-eux-build
 #cp D2Coding/*.ttf $dest/.fonts
 #fc-cache
 cp -a $dest/.vimrc $dest/occasion-backups/.vimrc
-echo 'set nocp number autoindent tabstop=2 shiftwidth=2 expandtab printheader=""' > $dest/.vimrc
+echo 'set nocp number autoindent tabstop=2 shiftwidth=2 expandtab' > $dest/.vimrc
+echo '" option disabled for neovim compatibility'
+echo '" uncomment the line below to clear printheader'
+echo '"printheader=""' > $dest/.vimrc
 #chown -R $user $dest/eux-utils
 #chmod -R 755 $dest/sve-eux-build/ohmyzsh
 #sed -ir 's,^.*zsh -l$,#&,' $dest/sve-eux-build/ohmyzsh/tools/install.sh

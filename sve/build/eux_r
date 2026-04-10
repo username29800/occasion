@@ -1,5 +1,5 @@
 distname=sve-occasion
-distversion=sve-occasion-2026.1
+distversion=sve-occasion-2026.4
 arg1=$(echo "$1" | sed 's,^$,.,')
 arg3=$(echo "$3" | sed 's,^$,.,')
 csdb=$(cat $arg1 | grep '^[^#]')

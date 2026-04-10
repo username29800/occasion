@@ -1,5 +1,5 @@
 distname=sve-occasion
-distversion=sve-occasion-2026.1
+distversion=sve-occasion-2026.4
 arg1=$(echo "$1" | sed 's,^$,.,')
 arg3=$(echo "$3" | sed 's,^$,.,')
 csdb=$(cat $arg1 | grep '^[^#]')
@@ -148,7 +148,10 @@ cd $dest/sve-eux-build
 #cp D2Coding/*.ttf $dest/.fonts
 #fc-cache
 cp -a $dest/.vimrc $dest/occasion-backups/.vimrc
-echo 'set nocp number autoindent tabstop=2 shiftwidth=2 expandtab printheader=""' > $dest/.vimrc
+echo 'set nocp number autoindent tabstop=2 shiftwidth=2 expandtab' > $dest/.vimrc
+echo '" option disabled for neovim compatibility'
+echo '" uncomment the line below to clear printheader'
+echo '"printheader=""' > $dest/.vimrc
 #chown -R $user $dest/eux-utils
 #chmod -R 755 $dest/sve-eux-build/ohmyzsh
 #sed -ir 's,^.*zsh -l$,#&,' $dest/sve-eux-build/ohmyzsh/tools/install.sh

@@ -1,6 +1,6 @@
 #section 10: distribution metadata
 @distname sve-occasion
-@distversion sve-occasion-2026.1
+@distversion sve-occasion-2026.4
 
 #section 20: argument preprocessor
 arg1 echo ${dq}\$1$dq $pchar $fearg
