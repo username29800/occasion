@@ -1,0 +1,76 @@
+echo "" >> $2
+echo "# basic connection info: ocsn (session) section" >> $2
+echo "$1 localhost 22 user" >> $2
+echo "" >> $2
+echo "# client identifier is loaded from the name component" >> $2
+echo "name.self_$1 1" >> $2
+echo "# identity key is selected from the id component" >> $2
+echo "id.id_$1 1" >> $2
+echo "" >> $2
+echo "# forwarding configuration: ocsn (session) section" >> $2
+echo "" >> $2
+echo "# local forwarding: remote -> local" >> $2
+echo "# local port :: remote port" >> $2
+echo "#fwd2loc_$1 8080::8080" >> $2
+echo "" >> $2
+echo "# remote forwarding: local -> remote" >> $2
+echo "# remote port :: local port" >> $2
+echo "#fwd2rem_$1 22::8122" >> $2
+echo "#fwd2rem_$1 6000::6000" >> $2
+echo "#fwd2rem_$1 6001::6001" >> $2
+echo "" >> $2
+echo "# whitespace in forwarding rule will cause errors" >> $2
+echo "" >> $2
+echo "# storage config: ocfs(file sharing) section" >> $2
+echo "store.loc_$1 1" >> $2
+echo "store.rem_$1 2" >> $2
+echo "" >> $2
+echo "# automatic key registration: ocaa(automated administration) section" >> $2
+echo "# remote .ssh directory" >> $2
+echo "r_dotssh_$1 /home/user/.ssh" >> $2
+echo "" >> $2
+echo "# public key to register on remote" >> $2
+echo "r_pub.key_$1 1" >> $2
+echo "" >> $2
+echo "# ocaa storage config: ocaa(automated administration) section" >> $2
+echo "r_store.remotedata_$1 2" >> $2
+echo "r_store.localpath_$1 3" >> $2
+echo "" >> $2
+echo "" >> $2
+echo "# this registers your ssh public key to remote" >> $2
+echo "r_exec_$1 ocaa_reg" >> $2
+echo "" >> $2
+echo "" >> $2
+echo "# this sets up the eux environment on remote" >> $2
+echo "#r_exec_$1 eux_r" >> $2
+echo "" >> $2
+echo "" >> $2
+echo "# adjust user's home directory. use absolute path" >> $2
+echo "r_eux_home_$1 /home/user" >> $2
+echo "r_eux_bin_$1 /home/user/occasion/sve/build" >> $2
+echo "" >> $2
+echo "" >> $2
+echo "# keep these options unchanged unless necessary" >> $2
+echo "#r_arg_$1" >> $2
+echo "#r_dbfile_$1" >> $2
+echo "" >> $2
+
+pp="Occasion Auto-config:"
+echo "$pp New instance $1 is created."
+echo "$pp "
+echo " ==============[recommended todo]=============="
+echo " 1. check connection"
+echo "    $ sh build/ocsn_con $2 $1"
+echo " "
+echo " 2. register pubkey"
+echo "    $ sh build/ocaa_run $2 $1"
+echo " "
+echo " 3. EUX setup"
+echo "    - tutorial is provided in config file: $2"
+echo " =============================================="
+echo " "
+echo "$pp Things you should adjust:"
+echo "$pp ocsn: basic connection info"
+echo "$pp ocaa: r_dotssh_$1, r_eux_home_$1"
+echo "$pp "
+echo "$pp The rest of the config is pre-wired. Good luck!"

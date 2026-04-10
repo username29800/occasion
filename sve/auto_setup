@@ -1,8 +1,8 @@
 # Global config
 config_name="config_name"
 key_name="key_name"
-dotssh="../../.ssh"
-homedir="../../"
+dotssh="$HOME/.ssh"
+homedir="$HOME"
 client_id="client.name.example"
 
 # Instance config

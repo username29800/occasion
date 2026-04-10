@@ -5,7 +5,7 @@ echo ""
 echo "Enter the name of new config:"
 read newdb_name
 echo "$pp Creating new config file '$newdb_name'"
-sh newdb "$newdb_name"
+sh newdb_nodocs "$newdb_name"
 echo ""
 echo "$pp Press Enter to Continue"
 read str

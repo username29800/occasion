@@ -1,0 +1,70 @@
+echo "# Welcome to OCCASION: One Config, Connect Anywhere, Share Instantly, Over Network" > $1
+echo "" >> $1
+echo "## section 1: global config" >> $1
+echo "# your .ssh directory" >> $1
+echo "cfg_dotssh /home/user/.ssh" >> $1
+echo "" >> $1
+echo "# you can specify ssh executable here" >> $1
+echo "#cfg_ssh ssh" >> $1
+echo "#cfg_scp scp" >> $1
+echo "#cfg_sshd /usr/sbin/sshd" >> $1
+echo "" >> $1
+echo "## section 2: components" >> $1
+echo "" >> $1
+echo "# client-side identifier: ip or hostname" >> $1
+echo "# this identifier is used for remote forwarding" >> $1
+echo "com_name1 127.0.0.1" >> $1
+echo "" >> $1
+echo "# local data storage for ocfs" >> $1
+echo "com_store1 localdata" >> $1
+echo "" >> $1
+echo "# remote data storage for ocfs" >> $1
+echo "com_store2 remotedata" >> $1
+echo "" >> $1
+echo "# occasion script path: for eux path extension" >> $1
+echo "com_store3 build/" >> $1
+echo "" >> $1
+echo "# ssh identity key for connection" >> $1
+echo "com_id1 keystore/key.ed25519" >> $1
+echo "" >> $1
+echo "# public key string for ocaa_reg" >> $1
+echo "com_pub1" >> $1
+echo "" >> $1
+echo "# Chroot container init script path" >> $1
+echo "com_ct.sabre1 ct_init/" >> $1
+echo "" >> $1
+echo "" >> $1
+echo "# Root directory for container" >> $1
+echo "com_store.ct1 system/" >> $1
+echo "com_store.ct2 /" >> $1
+echo "com_store.ct3 /" >> $1
+echo "" >> $1
+echo "## section X1: EUX config" >> $1
+echo "eux_home /home/user" >> $1
+echo "eux_user user" >> $1
+echo "eux_bin build/" >> $1
+echo "" >> $1
+echo "" >> $1
+echo "# per-instance config" >> $1
+echo "" >> $1
+
+echo " +#+#+#+#+#+#+#+#+#+#+#+#"
+echo " + Welcome to OCCASION: #"
+echo " + One Config           #"
+echo " + Connect Anywhere     #"
+echo " + Share Instantly      #"
+echo " + Over Network         #"
+echo " +#+#+#+#+#+#+#+#+#+#+#+#"
+echo "Occasion Auto-config: take a look at the config file $1"
+echo "Occasion Auto-config: for detailed explanation and tutorial"
+echo ""
+echo "Occasion Auto-config: the file $1 contains global configuration for Occasion"
+echo "Occasion Auto-config: TIP: run 'sh newconf [anything] $1'"
+echo "Occasion Auto-config:      to create new instance"
+echo ""
+echo "Occasion Auto-config: Things you should adjust:"
+echo "Occasion Auto-config: occm: cfg_dotssh, com_id1"
+echo "Occasion Auto-config: ocaa: com_pub1"
+echo "Occasion Auto-config: ocsn: com_name"
+echo "Occasion Auto-config:  eux: eux_home"
+

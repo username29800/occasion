@@ -7,7 +7,7 @@ read newconf_file
 echo "Enter the name of new instance:"
 read newconf_name
 echo "$pp Creating new instance '$newconf_name'"
-sh newconf "$newconf_name" "$newconf_file"
+sh newconf_nodocs "$newconf_name" "$newconf_file"
 echo ""
 echo "$pp Press Enter to Continue"
 read str
