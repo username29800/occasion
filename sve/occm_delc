@@ -1,0 +1,7 @@
+#!/bin/sh
+# occm instance remover
+dstr="$(grep -n "^\(podman \|[^ ]*_$2\)" $1)"
+lb="$(echo "$dstr" | head -n1 | cut -d: -f1)"
+le="$(echo "$dstr" | tail -n1 | cut -d: -f1)"
+echo $dstr $lb $le
+sed -i "$lb,${le}d" "$1"
