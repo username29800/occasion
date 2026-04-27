@@ -76,7 +76,7 @@ ct_wdidx=$(echo "$csdb" | grep "^c_store.ct.initwd_$entryname " | head -n1 | cut
 ct_workdir0=$(echo "$csdb" | grep "^com_store.ct$ct_wdidx " | head -n1 | cut -d' ' -f2- | sed 's,/ *\?$,,')
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
-echo "Occasion Session: starting server instance "\"$entryname"\"
+echo "Occasion Session: starting server instance "\""$entryname"\"
 echo "Occasion Session: using hostkey $hostkey"
 echo "Occasion Session: listening on port $lport"
 $xsv -h "$hostkey" -p "$lport"
