@@ -28,12 +28,9 @@ fwdruleset=$(echo "$csdb" | grep "^\(fwd2loc\|fwd2rem\)_$entryname " | sed "s,^f
 jumpdstidx=$(echo "$csdb" | grep "^jump.to_$entryname " | head -n1 | cut -d' ' -f2-)
 jumpto=$(echo "$csdb" | grep "^com_jump$jumpdstidx " | head -n1 | cut -d' ' -f2- | grep '^.*$' | sed 's,^.*$,-J &,')
 keyfile=$arg3
-lport=$(echo "$csdb" | grep '^listen_'$entryname' ' | cut -d' ' -f2 | head -n1)
 entryline=$(echo "$csdb" | grep -n .| grep '^[0-9]*:'$entryname' ' | cut -d: -f1 | head -n1)
 ididx=$(echo "$csdb" | grep "^id.id_$entryname " | cut -d' ' -f2- | head -n1)
 id=$(echo "$csdb" | grep "^com_id$ididx " | cut -d' ' -f2- | head -n1)
-hkidx=$(echo "$csdb" | grep "^id.hkey_$entryname " | cut -d' ' -f2- | head -n1)
-hostkey=$(echo "$csdb" | grep "^com_id$hkidx " | cut -d' ' -f2- | head -n1)
 snidx="$snidx"
 selfname="$selfname"
 lstoridx=$(echo "$csdb" | grep "^store.loc_$entryname " | cut -d' ' -f2- | head -n1)
@@ -77,6 +74,6 @@ ct_workdir0=$(echo "$csdb" | grep "^com_store.ct$ct_wdidx " | head -n1 | cut -d'
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
 echo "Occasion Session: starting server instance "\""$entryname"\"
-echo "Occasion Session: using hostkey $hostkey"
-echo "Occasion Session: listening on port $lport"
-$xsv -h "$hostkey" -p "$lport"
+echo "Occasion Session: using hostkey $id"
+echo "Occasion Session: listening on port $port"
+$xsv -h "$id" -p "$port"

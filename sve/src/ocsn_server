@@ -1,5 +1,5 @@
 #!/bin/sh
 echo "Occasion Session: starting server instance "\""$entryname"\"
-echo "Occasion Session: using hostkey $hostkey"
-echo "Occasion Session: listening on port $lport"
-$xsv -h "$hostkey" -p "$lport"
+echo "Occasion Session: using hostkey $id"
+echo "Occasion Session: listening on port $port"
+$xsv -h "$id" -p "$port"
