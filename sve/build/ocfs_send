@@ -79,5 +79,5 @@ ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #fdest="$4"
 echo "Occasion File-sharing: connecting to $user@$hostname:$port via ssh"
 echo "Occasion File-sharing: sending $localstor/$fsource"
-$xcp -i "$id" -OCrp -P "$port" $jumpto "$localstor/$fsource" $user@$hostname:"$remotestor/$fdest"
+$xcp -i $id -OCrp -P "$port" $jumpto "$localstor/$fsource" $user@$hostname:"$remotestor/$fdest"
 echo "Occasion File-sharing: saved to $remotestor/$fdest"
