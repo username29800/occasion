@@ -5,3 +5,4 @@ lb="$(echo "$dstr" | head -n1 | cut -d: -f1)"
 le="$(echo "$dstr" | tail -n1 | cut -d: -f1)"
 echo $dstr $lb $le
 sed -i "$lb,${le}d" "$1"
+sed -i "s/^$2 .*$//" "$1"
