@@ -23,14 +23,16 @@ selfname=$(echo "$csdb" | grep "^com_name$snidx " | cut -d' ' -f2- | head -n1)
 hostname=$(echo $entry | cut -d' ' -f2)
 port=$(echo $entry | cut -d' ' -f3)
 user=$(echo $entry | cut -d' ' -f4)
-pkey=$(echo "$csdb" | grep '^'$pkeyformat$entryname' ' | cut -d' ' -f2- | head -n1)
+pkey=$(echo "$csdb" | grep '^'$pkeyformat$entryname' ' | cut -d' ' -f2-)
 fwdruleset=$(echo "$csdb" | grep "^\(fwd2loc\|fwd2rem\)_$entryname " | sed "s,^fwd2loc_$entryname ,-L ," | sed "s,^fwd2rem_$entryname ,-R ," | sed "s,^-L [^:]*:,&$hostname," | sed "s,^-R [^:]*:,&$selfname," | tr "\\n" ' ' | sed 's, $,,')
 jumpdstidx=$(echo "$csdb" | grep "^jump.to_$entryname " | head -n1 | cut -d' ' -f2-)
 jumpto=$(echo "$csdb" | grep "^com_jump$jumpdstidx " | head -n1 | cut -d' ' -f2- | grep '^.*$' | sed 's,^.*$,-J &,')
 keyfile=$arg3
 entryline=$(echo "$csdb" | grep -n .| grep '^[0-9]*:'$entryname' ' | cut -d: -f1 | head -n1)
 ididx=$(echo "$csdb" | grep "^id.id_$entryname " | cut -d' ' -f2- | head -n1)
-id=$(echo "$csdb" | grep "^com_id$ididx " | cut -d' ' -f2- | head -n1)
+id=$(echo "$csdb" | grep "^com_id$ididx " | cut -d' ' -f2- | sed '2,$s,^,-i ,' | tr \\n ' ')
+hkidx=$(echo "$csdb" | grep "^id.hkey_$entryname " | cut -d' ' -f2- | head -n1)
+hostkey=$(echo "$csdb" | grep "^com_id$hkidx " | cut -d' ' -f2- | head -n1)
 snidx="$snidx"
 selfname="$selfname"
 lstoridx=$(echo "$csdb" | grep "^store.loc_$entryname " | cut -d' ' -f2- | head -n1)
@@ -55,7 +57,7 @@ svrex_args0=$(echo "$csdb" | grep "^r_arg_$entryname " | head -n1 | cut -d' ' -f
 svrex_args=$(echo "$svrex_args0" | sed "s,^$,$svrex_dbfile $entryname,")
 dotssh_r=$(echo "$csdb" | grep "^r_dotssh_$entryname " | head -n1 | cut -d' ' -f2-)
 pkey_ridx=$(echo "$csdb" | grep "^r_pub.key_$entryname " | head -n1 | cut -d' ' -f2-)
-pkey_r=$(echo "$csdb" | grep "^com_pub${pkey_ridx} " | head -n1 | cut -d' ' -f2-)
+pkey_r=$(echo "$csdb" | grep "^com_pub${pkey_ridx} " | cut -d' ' -f2-)
 eux_sve_bin_r=$(echo "$csdb" | grep "r_eux_bin_$entryname " | head -n1 | cut -d' ' -f2-)
 eux_home_r=$(echo "$csdb" | grep "^r_eux_home_$entryname " | head -n1 | cut -d' ' -f2- | sed "s,^$,$(whoami),")
 ct_pathidx0=$(echo "$csdb" | grep "^c_ct.sabre.origin_$entryname " | head -n1 | cut -d' ' -f2-)
@@ -74,6 +76,6 @@ ct_workdir0=$(echo "$csdb" | grep "^com_store.ct$ct_wdidx " | head -n1 | cut -d'
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
 echo "Occasion Session: starting server instance "\""$entryname"\"
-echo "Occasion Session: using hostkey $id"
+echo "Occasion Session: using hostkey $hostkey"
 echo "Occasion Session: listening on port $port"
-$xsv -h "$id" -p "$port"
+$xsv -h "$hostkey" -p "$port"

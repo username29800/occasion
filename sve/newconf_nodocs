@@ -2,10 +2,15 @@ echo "" >> $2
 echo "# basic connection info: ocsn (session) section" >> $2
 echo "$1 localhost 22 user" >> $2
 echo "" >> $2
+echo "# uncomment the line below to enable ssh forwarding (jump host)" >> $2
+echo "jump.to_$1 1" >> $2
+echo "" >> $2
 echo "# client identifier is loaded from the name component" >> $2
 echo "name.self_$1 1" >> $2
 echo "# identity key is selected from the id component" >> $2
 echo "id.id_$1 1" >> $2
+echo "# uncomment the line below to enable ocsn_server" >> $2
+echo "#id.hkey_$1 1" >> $2
 echo "" >> $2
 echo "# forwarding configuration: ocsn (session) section" >> $2
 echo "" >> $2

@@ -15,6 +15,9 @@ echo "# client-side identifier: ip or hostname" >> $1
 echo "# this identifier is used for remote forwarding" >> $1
 echo "com_name1 127.0.0.1" >> $1
 echo "" >> $1
+echo "# uncomment the line below to enable jump host" >> $1
+echo "#com_jump1 localhost" >> $1
+echo "" >> $1
 echo "# local data storage for ocfs" >> $1
 echo "com_store1 localdata" >> $1
 echo "" >> $1
