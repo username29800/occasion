@@ -1,3 +1,4 @@
+#!/bin/sh
 distname=sve-occasion
 distversion=sve-occasion-2026.4
 arg1=$(echo "$1" | sed 's,^$,.,')

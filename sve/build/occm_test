@@ -1,3 +1,4 @@
+#!/bin/sh
 distname=sve-occasion
 distversion=sve-occasion-2026.4
 arg1=$(echo "$1" | sed 's,^$,.,')
@@ -76,6 +77,7 @@ ct_workdir0=$(echo "$csdb" | grep "^com_store.ct$ct_wdidx " | head -n1 | cut -d'
 ct_workdir=$(echo "$ct_workdir0" | sed "s,^$,/,")
 #!/bin/sh
 echo
+echo #!/bin/sh="$#!/bin/sh"
 echo distname="$distname"
 echo distversion="$distversion"
 echo arg1="$arg1"

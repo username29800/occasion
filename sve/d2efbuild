@@ -21,5 +21,6 @@ cat d2ef.builder
 echo "" > $out
 sh d2ef.builder $out
 sed -i 1d $out
+sed -i 1i"#!/bin/sh" $out
 #rm d2ef.build0
 #rm d2ef.builder
