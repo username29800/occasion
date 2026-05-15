@@ -9,7 +9,7 @@
 # Global config
 config_name="config_name"
 key_name="key_name"
-dotssh="$HOME/.ssh"
+dotssh="sshfiles_${config_name}"
 homedir="$HOME"
 client_id="here.example"
 
@@ -28,6 +28,8 @@ instance_dotssh="/home/${instance_user}/.ssh"
 instance_home="/home/${instance_user}"
 
 # Runner
+
+mkdir sshfiles_"$config_name"
 
 echo "$create_config
 $config_name

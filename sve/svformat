@@ -1,6 +1,6 @@
 #section 10: distribution metadata
 @distname sve-occasion
-@distversion sve-occasion-2026.4
+@distversion sve-occasion-strEnvTest-May-15-1
 
 #section 20: argument preprocessor
 arg1 echo ${dq}\$1$dq $pchar $fearg
@@ -59,6 +59,14 @@ lstoridx echo ${dq}\$csdb$dq $pchar grep ${dq}'^store.loc_$entryname '$dq $pchar
 rstoridx echo ${dq}\$csdb$dq $pchar grep ${dq}'^store.rem_$entryname '$dq $pchar ${pos}2- $pchar $ln
 localstor echo ${dq}\$csdb$dq $pchar grep ${dq}'^com_store$lstoridx '$dq $pchar ${pos}2- $pchar $ln
 remotestor echo ${dq}\$csdb$dq $pchar grep ${dq}'^com_store$rstoridx '$dq $pchar ${pos}2- $pchar $ln
+#custom ssh_config options
+opidx ${sve_db}'^opt.custom_$entryname '${sve_nc}
+customArg0 ${sve_db}'^com_opt$opidx '${sve_ncl} $pchar tr ${nwln} $sq $sq
+sopidx ${sve_db}'^opt.system_$entryname '${sve_nc}
+customArg1 ${sve_db}'^com_opt$sopidx '${sve_ncl} $pchar tr ${nwln} $sq $sq
+svopidx ${sve_db}'^opt.server_$entryname '${sve_nc}
+customArg2 ${sve_db}'^com_opt$svopidx '${sve_ncl} $pchar tr ${nwln} $sq $sq
+@customArgs $dq'${customArg0}${customArg1}${customArg2}'$dq
 
 #section 60: others
 @q86e $dq''$q86 $q86dev''$dq

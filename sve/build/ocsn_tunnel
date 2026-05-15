@@ -1,6 +1,6 @@
 #!/bin/sh
 distname=sve-occasion
-distversion=sve-occasion-2026.4
+distversion=sve-occasion-strEnvTest-May-15-1
 arg1=$(echo "$1" | sed 's,^$,.,')
 arg3=$(echo "$3" | sed 's,^$,.,')
 csdb=$(cat $arg1 | grep '^[^#]')
@@ -40,6 +40,13 @@ lstoridx=$(echo "$csdb" | grep "^store.loc_$entryname " | cut -d' ' -f2- | head 
 rstoridx=$(echo "$csdb" | grep "^store.rem_$entryname " | cut -d' ' -f2- | head -n1)
 localstor=$(echo "$csdb" | grep "^com_store$lstoridx " | cut -d' ' -f2- | head -n1)
 remotestor=$(echo "$csdb" | grep "^com_store$rstoridx " | cut -d' ' -f2- | head -n1)
+opidx=$(echo "$csdb" | grep "^opt.custom_$entryname " | head -n1 | cut -d' ' -f2-)
+customArg0=$(echo "$csdb" | grep "^com_opt$opidx " | cut -d' ' -f2- | tr \\n ' ')
+sopidx=$(echo "$csdb" | grep "^opt.system_$entryname " | head -n1 | cut -d' ' -f2-)
+customArg1=$(echo "$csdb" | grep "^com_opt$sopidx " | cut -d' ' -f2- | tr \\n ' ')
+svopidx=$(echo "$csdb" | grep "^opt.server_$entryname " | head -n1 | cut -d' ' -f2-)
+customArg2=$(echo "$csdb" | grep "^com_opt$svopidx " | cut -d' ' -f2- | tr \\n ' ')
+customArgs="${customArg0}${customArg1}${customArg2}"
 q86e="qemu-system-x86 -machine q35 -cpu max -accel kvm -device virtio-net-pci,netdev=unet -net user,id=unet -device virtio-scsi-pci"
 q86root="sudo $q86e"
 eux_home0=$(echo "$csdb" | grep "^eux_home " | head -n1 | cut -d' ' -f2-)
@@ -81,4 +88,4 @@ echo "Occasion Session: connecting to $user@$hostname:$port via ssh"
 echo "Occasion Session: Using ID Key: $id"
 echo "Occasion Session: forwarding rules:"
 echo "Occasion Session: $fwdruleset"
-$xsh -YCTNnf -p "$port" $jumpto $fwdruleset -i $id $user@"$hostname"
+$xsh -YCTNnf -p "$port" $jumpto $fwdruleset -i $id $customArgs $user@"$hostname"

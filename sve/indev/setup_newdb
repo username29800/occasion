@@ -1,22 +1,23 @@
+source setup_dec
 echo "# Welcome to OCCASION: One Config, Connect Anywhere, Share Instantly, Over Network" > $1
 echo "" >> $1
 echo "## section 1: global config" >> $1
 echo "# your .ssh directory" >> $1
-echo "cfg_dotssh sshfiles_$1" >> $1
+echo "cfg_dotssh $dotssh" >> $1
 echo "" >> $1
 echo "# you can specify ssh executable here" >> $1
-echo "#cfg_ssh /usr/bin/ssh" >> $1
-echo "#cfg_scp /usr/bin/scp" >> $1
-echo "#cfg_sshd /usr/sbin/sshd" >> $1
+echo "#cfg_ssh $sshPath" >> $1
+echo "#cfg_scp $scpPath" >> $1
+echo "#cfg_sshd $svPath" >> $1
 echo "" >> $1
 echo "## section 2: components" >> $1
 echo "" >> $1
 echo "# client-side identifier: ip or hostname" >> $1
 echo "# this identifier is used for remote forwarding" >> $1
-echo "com_name1 127.0.0.1" >> $1
+echo "com_name1 $defaultname" >> $1
 echo "" >> $1
 echo "# uncomment the line below to enable jump host" >> $1
-echo "#com_jump1 localhost" >> $1
+echo "#com_jump1 $defaultjump" >> $1
 echo "" >> $1
 echo "# local data storage for ocfs" >> $1
 echo "com_store1 localdata" >> $1
@@ -28,14 +29,14 @@ echo "# occasion script path: for eux path extension" >> $1
 echo "com_store3 build/" >> $1
 echo "" >> $1
 echo "# custom options when running ssh/sshd" >> $1
-echo "com_opt1 -o UserKnownHostsFile ./sshfiles_$1/known_hosts_$1" >> $1
-echo "com_opt2 -o AuthorizedKeysFile ./sshfiles_$1/authorized_keys" >> $1
+echo "com_opt1 -o UserKnownHostsFile ./$dotssh/known_hosts_$1" >> $1
+echo "com_opt2 -o AuthorizedKeysFile ./$dotssh/authorized_keys_$1" >> $1
 echo "" >> $1
 echo "# ssh identity key for connection" >> $1
-echo "com_id1 keystore/key.ed25519" >> $1
+echo "com_id1 keystore/$keyname" >> $1
 echo "" >> $1
 echo "# public key string for ocaa_reg" >> $1
-echo "com_pub1" >> $1
+echo "com_pub1 $pubkey" >> $1
 echo "" >> $1
 echo "# Chroot container init script path" >> $1
 echo "com_ct.sabre1 ct_init/" >> $1
@@ -47,8 +48,8 @@ echo "com_store.ct2 /" >> $1
 echo "com_store.ct3 /" >> $1
 echo "" >> $1
 echo "## section X1: EUX config" >> $1
-echo "eux_home /home/user" >> $1
-echo "eux_user user" >> $1
+echo "eux_home $euxlocalhome" >> $1
+echo "eux_user $username" >> $1
 echo "eux_bin build/" >> $1
 echo "" >> $1
 echo "" >> $1

@@ -1,6 +1,7 @@
+source setup_dec
 echo "" >> $2
 echo "# basic connection info: ocsn (session) section" >> $2
-echo "$1 localhost 22 user" >> $2
+echo "$1 $clientid $port $remoteuser" >> $2
 echo "" >> $2
 echo "# uncomment the line below to enable ssh forwarding (jump host)" >> $2
 echo "#jump.to_$1 1" >> $2
@@ -32,7 +33,7 @@ echo "store.rem_$1 2" >> $2
 echo "" >> $2
 echo "# automatic key registration: ocaa(automated administration) section" >> $2
 echo "# remote .ssh directory" >> $2
-echo "r_dotssh_$1 /home/user/.ssh" >> $2
+echo "r_dotssh_$1 $dotssh" >> $2
 echo "" >> $2
 echo "# public key to register on remote" >> $2
 echo "r_pub.key_$1 1" >> $2
@@ -58,9 +59,6 @@ echo "" >> $2
 echo "# keep these options unchanged unless necessary" >> $2
 echo "#r_arg_$1" >> $2
 echo "#r_dbfile_$1" >> $2
-echo "" >> $2
-echo "opt.system_$1 1" >> $2
-echo "#opt.server_$1 2" >> $2
 echo "" >> $2
 
 pp="Occasion Auto-config:"
