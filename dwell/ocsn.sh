@@ -31,7 +31,7 @@ dwell_set_cmd='read rdw_cmd'
 alias dwell_set_cmd="$dwell_set_cmd"
 
 dwell_auth='
-rdw_key="$(cat "$dwcm_keystore_path/${cdw_session_id}.pub")"
+rdw_key="$(cat "${cdw_session_id}.pub")"
 rdw_kpath="$(echo "$rdwcm_authfile" | sed "s,/[^/]*$,,")"
 rdw_cmd="mkdir -p $rdw_kpath && echo $rdw_key >> $rdwcm_authfile && chmod 0600 $rdwcm_authfile"
 dwell_cone'
