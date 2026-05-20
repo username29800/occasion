@@ -1,0 +1,18 @@
+#!/bin/sh
+
+dwell_cinfo='
+echo "Occasion Session: connecting to $user@$hostname:$port via ssh"
+echo "Occasion Session: Using ID Key: $id"
+echo "Occasion Session: forwarding rules:"
+echo "Occasion Session: $fwdruleset"
+'
+alias dwell_cinfo="$dwell_cinfo"
+
+dwell_con='dwell_cinfo
+$xsh -YC -p "$port" $jumpto $fwdruleset -i $id $customArgs $user@"$hostname"'
+alias dwell_con="$dwell_con"
+
+dwell_tnl='$xsh -YCTNnf -p "$port" $jumpto $fwdruleset -i $id $customArgs $user@"$hostname"'
+alias dwell_tnl="$dwell_tnl"
+
+alias arg='echo $1'

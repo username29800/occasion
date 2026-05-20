@@ -1,0 +1,7 @@
+#!/bin/sh
+#fwdrule="$3"
+echo "Occasion Session: connecting to $user@$hostname:$port via ssh"
+echo "Occasion Session: Using ID Key: $id"
+echo "Occasion Session: forwarding rules:"
+echo "Occasion Session: $fwdruleset"
+$xsh -YCTNnf -p "$port" $jumpto $fwdruleset -i $id $customArgs $user@"$hostname"

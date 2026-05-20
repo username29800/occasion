@@ -1,0 +1,8 @@
+#!/bin/sh
+dwell_sv='
+echo "Occasion Session: starting server instance "\""$entryname"\"
+echo "Occasion Session: using hostkey $hostkey"
+echo "Occasion Session: listening on port $port"
+$xsv -h "$hostkey" -p "$port" $customArgs_sv'
+
+alias dwell_sv="$dwell_sv"
