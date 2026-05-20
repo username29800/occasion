@@ -3,7 +3,7 @@ cdw_xcp='/usr/bin/scp'
 cdw_xsv='/usr/bin/sshd'
 
 cdw_session_selfname='localhost'
-cdw_session_hostname='localhost'
+cdw_session_host='localhost'
 cdw_session_port='2200'
 cdw_session_id='.'
 cdw_session_user='user'

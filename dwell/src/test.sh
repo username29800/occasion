@@ -1,0 +1,7 @@
+cdw_session_selfname='localhost'
+cdw_session_hostname='localhost'
+cdw_session_port='2200'
+cdw_session_id='.'
+cdw_session_user='user'
+cdw_session_jmp='-R 6000::6000'
+ldwell_fwds=' -R 6000:localhost:6000 -R 6001:localhost:6001 -R 11434:localhost:11434 '

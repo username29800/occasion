@@ -9,10 +9,10 @@ echo "Occasion Session: $ldwell_fwds"
 alias dwell_cinfo="$dwell_cinfo"
 
 dwell_con='dwell_cinfo
-$xsh -YC -p "$cdw_session_port" $ldwell_session_jmp $ldwell_fwds -i $cdw_session_id $cdw_session_args $cdw_session_user@"$cdw_session_host"'
+$cdw_xsh -YC -p "$cdw_session_port" $cdw_session_jmp $ldwell_fwds -i $cdw_session_id $cdw_session_args $cdw_session_user@"$cdw_session_host"'
 alias dwell_con="$dwell_con"
 
-dwell_tnl='$xsh -YCTNnf -p "$cdw_session_port" $ldwell_session_jmp $ldwell_fwds -i $cdw_session_id $cdw_session_args $cdw_session_user@"$cdw_session_host"'
+dwell_tnl='$cdw_xsh -YCTNnf -p "$cdw_session_port" $cdw_session_jmp $ldwell_fwds -i $cdw_session_id $cdw_session_args $cdw_session_user@"$cdw_session_host"'
 alias dwell_tnl="$dwell_tnl"
 
 alias arg='echo $1'
