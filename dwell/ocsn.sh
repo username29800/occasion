@@ -39,5 +39,5 @@ alias dwell_auth="$dwell_auth"
 
 dwell_env='
 mkdir dotssh_internal
-dwell_newkey'
+dwell_new_key'
 alias dwell_env="$dwell_env"
