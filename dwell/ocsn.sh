@@ -36,3 +36,8 @@ rdw_kpath="$(echo "$rdwcm_authfile" | sed "s,/[^/]*$,,")"
 rdw_cmd="mkdir -p $rdw_kpath && echo $rdw_key >> $rdwcm_authfile && chmod 0600 $rdwcm_authfile"
 dwell_cone'
 alias dwell_auth="$dwell_auth"
+
+dwell_env='
+mkdir dotssh_internal
+dwell_newkey'
+alias dwell_env="$dwell_env"
