@@ -10,5 +10,12 @@ alias ldwell_current_config="$ldwell_current_config"
 ldwell_load_config='. "$ldwell_config_file"'
 alias ldwell_load_config="$ldwell_load_config"
 
-ldwell_update_config='ldwell_config_list | grep "^$ldwell_config_alias " | cut -d" " -f2'
-alias ldwell_update_config="ldwell_config_file="\""$(eval $ldwell_update_config)"\"""
+ldwell_update_config='
+ldwell_config_file="$(ldwell_config_list | grep "^$ldwell_config_alias " | cut -d" " -f2)"'
+#alias ldwell_update_config="ldwell_config_file="\""$(eval $ldwell_update_config)"\"""
+alias ldwell_update_config="$ldwell_update_config"
+
+ldwell_config_is='
+read ldwell_config_alias
+ldwell_update_config'
+alias ldwell_config_is="$ldwell_config_is"
