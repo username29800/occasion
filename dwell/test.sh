@@ -15,5 +15,5 @@ dwcm_keystore_backup='keystore_backup'
 rdwcm_authfile='/home/user/.ssh/authorized_keys'
 
 cdw_env_home='/home/user'
-cdw_session_args='-o '\''UserKnownHostsFile=./dotssh_internal/known_hosts'\'''
-cdw_session_args_srv='-o '\''AuthorizedKeysFile=./dotssh_internal/authorized_keys'\'''
+cdw_session_args='-o UserKnownHostsFile=./dotssh_internal/known_hosts'
+cdw_session_args_srv='-o AuthorizedKeysFile=./dotssh_internal/authorized_keys'

@@ -16,8 +16,8 @@ echo dwcm_keystore_backup='\\\''keystore_backup'\\\''
 echo rdwcm_authfile='\\\''/home/"$cdw_session_user"/.ssh/authorized_keys'\\\''
 echo 
 echo cdw_env_home='\\\''/home/"$cdw_session_user"'\\\''
-echo cdw_session_args='\\\''-o '\\\''\\'\\\'\\\''UserKnownHostsFile=./dotssh_internal/known_hosts'\\\''\\'\\\'\\\'''\\\''
-echo cdw_session_args_srv='\\\''-o '\\\''\\'\\\'\\\''AuthorizedKeysFile=./dotssh_internal/authorized_keys'\\\''\\'\\\'\\\'''\\\''
+echo cdw_session_args='\\\''-o UserKnownHostsFile=./dotssh_internal/known_hosts'\\\''
+echo cdw_session_args_srv='\\\''-o AuthorizedKeysFile=./dotssh_internal/authorized_keys'\\\''
 '
 alias dwell_create_config="$dwell_create_config"
 
