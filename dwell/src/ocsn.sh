@@ -15,4 +15,8 @@ alias dwell_con="$dwell_con"
 dwell_tnl='$cdw_xsh -YCTNnf -p "$cdw_session_port" $cdw_session_jmp $ldwell_fwds -i $cdw_session_id $cdw_session_args $cdw_session_user@"$cdw_session_host"'
 alias dwell_tnl="$dwell_tnl"
 
-alias arg='echo $1'
+dwell_cone='$cdw_xsh -YC -p "$cdw_session_port" $cdw_session_jmp $ldwell_fwds -i $cdw_session_id $cdw_session_args $cdw_session_user@"$cdw_session_host" -t "$rdw_cmd"'
+alias dwell_cone="$dwell_cone"
+
+dwell_set_cmd='read rdw_cmd'
+alias dwell_set_cmd="$dwell_set_cmd"
