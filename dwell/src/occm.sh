@@ -5,9 +5,27 @@ echo cdw_session_port='\\\''2200'\\\''
 echo cdw_session_id='\\\''.'\\\''
 echo cdw_session_user='\\\''user'\\\''
 echo cdw_session_jmp='\\\''-R 6000::6000'\\\''
-echo ldwell_fwds='\\\''"$(eval ldwell_create_fwdrule)"'\\\''
+echo ldwell_fwds='\''"$(eval ldwell_create_fwdrule)"'\''
+echo
+echo dwcm_newkey_name='\\\''key_default'\\\''
+echo dwcm_keystore_path='\\\''keystore'\\\''
+echo dwcm_keystore_backup='\\\''keystore_backup'\\\''
+echo rdwcm_authfile='\\\''/home/"$cdw_session_user"/.ssh/authorized_keys'\\\''
 '
 alias dwell_create_config="$dwell_create_config"
 
 dwell_save_config='echo "$(dwell_create_config)" >> "$ldwell_config_file"'
 alias dwell_save_config="$dwell_save_config"
+
+dwell_rm_config='rm -f "$ldwell_config_file"'
+alias dwell_rm_config="$dwell_rm_config"
+
+dwell_new_key='
+mkdir -p "$dwcm_keystore_path"
+mkdir -p "$dwcm_keystore_backup"
+mv "$dwcm_keystore_path/$dwcm_newkey_name" "$dwcm_keystore_backup/$dwcm_newkey_name"
+mv "$dwcm_keystore_path/$dwcm_newkey_name".pub "$dwcm_keystore_backup/$dwcm_newkey_name".pub
+ssh-keygen -t ed25519 -N "" -f "$dwcm_keystore_path/$dwcm_newkey_name"
+chmod 0700 "$dwcm_keystore_path"
+chmod -R 0600 "$dwcm_keystore_path"/*'
+alias dwell_new_key="$dwell_new_key"

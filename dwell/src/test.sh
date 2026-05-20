@@ -4,4 +4,9 @@ cdw_session_port='2200'
 cdw_session_id='.'
 cdw_session_user='user'
 cdw_session_jmp='-R 6000::6000'
-ldwell_fwds=' -R 6000:localhost:6000 -R 6001:localhost:6001 -R 11434:localhost:11434 '
+ldwell_fwds="$(eval ldwell_create_fwdrule)"
+
+dwcm_newkey_name='key_default'
+dwcm_keystore_path='keystore'
+dwcm_keystore_backup='keystore_backup'
+rdwcm_authfile='/home/user/.ssh/authorized_keys'
