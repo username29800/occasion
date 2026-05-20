@@ -1,4 +1,4 @@
 #. ./config.sh
 . ./lib.sh
-. ./ocsn_con
+. ./ocsn.sh
 . ./occm.sh

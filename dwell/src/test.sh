@@ -1,7 +1,7 @@
 cdw_session_selfname='localhost'
 cdw_session_hostname='localhost'
 cdw_session_port='2200'
-cdw_session_id='.'
+cdw_session_id='keystore/key_default'
 cdw_session_user='user'
 cdw_session_jmp='-R 6000::6000'
 ldwell_fwds="$(eval ldwell_create_fwdrule)"
