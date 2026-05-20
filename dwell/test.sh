@@ -6,7 +6,8 @@ cdw_session_host='localhost'
 cdw_session_port='22'
 cdw_session_id='keystore/key_default'
 cdw_session_user='user'
-cdw_session_jmp='-R 6000::6000'
+cdw_session_jmp=''
+cdw_session_fwdrules='-R 6000::6000'
 ldwell_fwds="$(eval ldwell_create_fwdrule)"
 
 dwcm_newkey_name='key_default'
