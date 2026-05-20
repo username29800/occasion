@@ -1,7 +1,0 @@
-#!/bin/sh
-#fsource="$3"
-#fdest="$4"
-echo "Occasion File-sharing: connecting to $user@$hostname:$port via ssh"
-echo "Occasion File-sharing: sending $localstor/$fsource"
-$xcp -i $id -OCrp -P "$port" $jumpto $customArgs "$localstor/$fsource" $user@$hostname:"$remotestor/$fdest"
-echo "Occasion File-sharing: saved to $remotestor/$fdest"

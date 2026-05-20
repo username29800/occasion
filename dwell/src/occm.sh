@@ -1,7 +1,10 @@
 dwell_create_config='
+echo cdw_xsh='\\\''/usr/bin/ssh'\\\''
+echo cdw_xcp='\\\''/usr/bin/scp'\\\''
+echo cdw_srv='\\\''/usr/sbin/sshd'\\\''
 echo cdw_session_selfname='\\\''localhost'\\\''
 echo cdw_session_hostname='\\\''localhost'\\\''
-echo cdw_session_port='\\\''2200'\\\''
+echo cdw_session_port='\\\''22'\\\''
 echo cdw_session_id='\\\''keystore/key_default'\\\''
 echo cdw_session_user='\\\''user'\\\''
 echo cdw_session_jmp='\\\''-R 6000::6000'\\\''
@@ -11,6 +14,8 @@ echo dwcm_newkey_name='\\\''key_default'\\\''
 echo dwcm_keystore_path='\\\''keystore'\\\''
 echo dwcm_keystore_backup='\\\''keystore_backup'\\\''
 echo rdwcm_authfile='\\\''/home/"$cdw_session_user"/.ssh/authorized_keys'\\\''
+echo 
+echo cdw_env_home='\\\''/home/"$cdw_session_user"'\\\''
 '
 alias dwell_create_config="$dwell_create_config"
 

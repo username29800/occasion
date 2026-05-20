@@ -1,11 +1,11 @@
 #!/bin/sh
 
 dwell_cinfo='
-echo "Occasion Session: connecting to $cdw_session_user@$cdw_session_host:$cdw_session_port via ssh"
-echo "Occasion Session: Using ID Key: $cdw_session_id"
-echo "Occasion Session: forwarding rules:"
-echo "Occasion Session: $ldwell_fwds"
-'
+echo "[ ssh.well session manager ]"
+echo "connecting to $cdw_session_user@$cdw_session_host:$cdw_session_port via ssh"
+echo "Using ID Key: $cdw_session_id"
+echo "forwarding rules:"
+echo "$ldwell_fwds"'
 alias dwell_cinfo="$dwell_cinfo"
 
 dwell_con='dwell_cinfo
@@ -14,6 +14,15 @@ alias dwell_con="$dwell_con"
 
 dwell_tnl='$cdw_xsh -YCTNnf -p "$cdw_session_port" $cdw_session_jmp $ldwell_fwds -i $cdw_session_id $cdw_session_args $cdw_session_user@"$cdw_session_host"'
 alias dwell_tnl="$dwell_tnl"
+
+dwell_srv='
+echo "[ ssh.well server wrapper ]"
+echo "starting server instance"
+echo "with config file $ldwell_config_file"
+echo "hostkey $cdw_session_id"
+echo "listening on port $cdw_session_port"
+$cdw_xsv -h "$cdw_session_id" -p "$cdw_session_port" $cdw_session_args'
+alias dwell_srv="$dwell_srv"
 
 dwell_cone='$cdw_xsh -YC -p "$cdw_session_port" $cdw_session_jmp $ldwell_fwds -i $cdw_session_id $cdw_session_args $cdw_session_user@"$cdw_session_host" -t "$rdw_cmd"'
 alias dwell_cone="$dwell_cone"

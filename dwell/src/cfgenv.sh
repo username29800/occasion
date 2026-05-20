@@ -1,7 +1,7 @@
 #!/bin/sh
 #user experience configuration utility - nonroot version
-src="$(cd $eux_sve_bin && pwd)"
-dest="$(cd $eux_home && pwd)"
+#src="$(cd $cdw_sve_eux_utils_path && pwd)"
+dest="$(cd $cdw_env_home && pwd)"
 mkdir $dest/eux-utils
 mkdir $dest/sve-eux-build
 mkdir $dest/occasion-backups
@@ -21,7 +21,7 @@ echo 'export QT_IM_MODULE=ibus' >> .zshrc.1
 echo 'export XMODIFIERS=@im=ibus' >> .zshrc.1
 echo '# uncomment this line for pulseaudio/pipewire forwarding' >> .zshrc.1
 echo '#export PULSE_SERVER=localhost' >> .zshrc.1
-echo 'export PATH=$PATH:'"$src:$dest/eux-utils" >> .zshrc.1
+echo 'export PATH=$PATH:'"$dest/eux-utils" >> .zshrc.1
 echo '# for wayland sessions with ibus (ibus wayland)' >> .zshrc.1
 echo '#unset GTK_IM_MODULE' >> .zshrc.1
 echo '#unset QT_IM_MODULE' >> .zshrc.1
@@ -61,7 +61,7 @@ cp -a xstartup .vnc/xstartup
 #echo 'Name=Custom' >> /usr/share/xsessions/custom.desktop
 #echo 'Exec=/home/'"$user"'/xstartup' >> /usr/share/xsessions/custom.desktop
 #echo 'Type=application' >> /usr/share/xsessions/custom.desktop
-cp $src/utils/swsh $dest/swsh
+#cp $src/utils/swsh $dest/swsh
 echo "LD_PRELOAD=/system/lib64/libskcodec.so pulseaudio --load='module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1'" > $dest/eux-utils/sndsrv
 sed -i 1i"#\!/bin/sh" $dest/eux-utils/sndsrv
 chmod 755 $dest/eux-utils/sndsrv
