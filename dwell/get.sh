@@ -1,10 +1,5 @@
 #!/bin/sh
-. ./lib.sh
-. ./ocfs.sh
-. ./ocsn.sh
-. ./occm.sh
-
-ldwell_load_config
+. ./src.sh
 
 dwfs_src="$dwfs_prefix$1"
 dwfs_dst="$dwfs_prefix$2"
