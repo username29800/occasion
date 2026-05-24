@@ -25,3 +25,12 @@ alias ldwell_config_is="$ldwell_config_is"
 
 ldwell_create_fwdrule='echo "$cdw_session_fwdrules" | sed '\"'s,\([^:]\)::\([^:]\),\1:$cdw_session_selfname:\2,'\"' | tr \\n " "'
 alias ldwell_create_fwdrule="$ldwell_create_fwdrule"
+
+ldwell_flatten_idlist='
+echo "$cdw_session_idlist" | tr \\n \  | sed '\''s,^ *,,'\'' | sed '\''s, *$,,'\''
+'
+alias ldwell_flatten_idlist="$ldwell_flatten_idlist"
+
+ldwell_gen_idopts='
+cdw_session_id="$(echo "$(ldwell_flatten_idlist)" | sed '\''s, , -i ,g'\'' | sed '\''s,^ -i ,,g'\'' | sed '\''s,\( -i\)*$,,'\'')"'
+alias ldwell_gen_idopts="eval $ldwell_gen_idopts"
