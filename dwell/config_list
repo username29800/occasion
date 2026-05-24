@@ -1,2 +1,2 @@
-test    test.sh
-config  cfg.sh
+test    ./test.sh
+config  ./cfg.sh
